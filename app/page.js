@@ -20,6 +20,7 @@ import VideoCall from "@/components/Call/VideoCall";
 import { VoiceCall } from "@/components/Call";
 import { IncomingCall, IncomingVideoCall } from "@/components/common";
 import Menubar from "@/components/Menubar";
+import Home from "@/components/Home/Home";
 
 const App = () => {
   const [redirectLogin, setRedirectLogin] = useState(false);
@@ -32,6 +33,7 @@ const App = () => {
       incomingVideoCall,
       voiceCall,
       incomingVoiceCall,
+      feedComponent
     },
     dispatch,
   } = useGlobalContext();
@@ -195,14 +197,15 @@ const App = () => {
               {messageSearchApplied && <SearchMessages />}
             </div>
             </section>
-            <ChatList/>
             </>
           ) : (
             <>
-            <Empty />
-            <ChatList/>
+            {/* <Empty /> */}
+            <Home/>
+
             </>
           )}
+          <ChatList/>
         </div>
       )}
     </>

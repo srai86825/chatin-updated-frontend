@@ -18,7 +18,8 @@ function ChatList() {
   }, [contactsPage]);
 
   return (
-    <section className="sticky min-w-[360px] right-0 top-0 z-20 flex w-fit flex-col justify-between  overflow-auto border-l border-l-dark-4   py-4   max-xl:hidden bg-blueshade s">
+    <div className="bg-chat-background h-screen bg-blueshade ">
+    <section className="sticky min-w-[360px] right-0 top-0 z-20 flex w-fit flex-col justify-between  overflow-auto border-l border-l-dark-4   py-4   h-screen bg-blueshade bg-opacity-90">
     
       <ChatListHeader />
       {pageType === "default-page" && (
@@ -34,6 +35,7 @@ function ChatList() {
       )}
    
     </section>
+    </div>
   );
 }
 

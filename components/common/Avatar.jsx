@@ -80,7 +80,7 @@ function Avatar({ type, image, setImage }) {
       <div className="flex justify-center items-center">
         {type === "sm" && (
           <div className="relative h-10 w-10">
-            <Image src={image} alt="avatar" className="rounded-full" fill />
+            <Image src={image | "/public/avatars/3.png"} alt="avatar" className="rounded-full" fill />
           </div>
         )}
         {type === "lg" && (

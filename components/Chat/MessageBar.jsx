@@ -14,7 +14,7 @@ import { CaptureAudio } from "../common";
 
 function MessageBar() {
   const {
-    state: { currentChatUser, userInfo, socket },
+    state: { currentChatUser,contactUsers, userInfo, socket },
     dispatch,
   } = useGlobalContext();
   const emojiPickerRef = useRef(null);
@@ -115,6 +115,26 @@ function MessageBar() {
           },
         });
         setMessage("");
+
+        await dispatch({
+          type: reducerCases.SET_CONTACT_USERS,
+          contactUsers:contactUsers? [
+            { data: {...currentChatUser,...data.message} },
+            ...contactUsers.filter(
+              (usr) => usr.data.id !== currentChatUser.id
+            ),
+          ]:[{ data: {...currentChatUser,...data.message} }]
+        });
+
+        // dispatch({
+        //   type: reducerCases.SET_ALL_CONTACTS_CONNECTED,
+        //   allContactsConnected:allContactsConnected? [
+        //     { data: {...currentChatUser,...data.message} },
+        //     ...allContactsConnected.filter(
+        //       (usr) => usr.data.id !== currentChatUser.id
+        //     ),
+        //   ]:[{ data: {...currentChatUser,...data.message} }],
+        // });
       } catch (error) {
         console.error(error);
       }

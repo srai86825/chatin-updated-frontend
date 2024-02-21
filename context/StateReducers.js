@@ -1,6 +1,7 @@
 import { reducerCases } from "./constants";
 
 export const initialState = {
+  latestStories: [],
   userInfo: undefined,
   isNewUser: false,
   contactsPage: false,
@@ -16,6 +17,7 @@ export const initialState = {
   voiceCall: undefined,
   incomingVideoCall: undefined,
   videoCall: undefined,
+  feedComponent: "Home",
 };
 
 export const reducer = (state, action) => {
@@ -135,6 +137,20 @@ export const reducer = (state, action) => {
         voiceCall: undefined,
         incomingVideoCall: undefined,
         videoCall: undefined,
+      };
+    }
+
+    case reducerCases.SET_FEED_COMPONENT: {
+      return {
+        ...state,
+        feedComponent: action.feedComponent,
+      };
+    }
+
+    case reducerCases.SET_LATEST_STORY: {
+      return {
+        ...state,
+        latestStories: [action.payload],
       };
     }
 

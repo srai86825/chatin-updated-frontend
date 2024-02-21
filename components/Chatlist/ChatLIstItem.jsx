@@ -15,11 +15,12 @@ function ChatLIstItem({ data, isContactPage = false }) {
   const handleInitiateChat = async () => {
     await dispatch({ type: reducerCases.CHANGE_CURRENT_CHAT_USER, user: data });
     if (!isContactPage) await dispatch({ type: reducerCases.SET_ALL_CONTACTS });
+    await dispatch({ type: reducerCases.SET_FEED_COMPONENT, feedComponent: undefined})
   };
 
   return (
     <div
-      className={`flex  cursor-pointer border-b-2 border-gray-200  py-2 border-opacity-60 items-center hover:bg-background-default-hover`}
+      className={`flex  cursor-pointer border-b-2 border-gray-200  py-2 border-opacity-60 items-center hover:bg-purple-600 `}
       onClick={handleInitiateChat}
     >
       <div className="min-w-fit px-5 pt-3 pb-1 ">

@@ -32,7 +32,10 @@ module.exports = {
           "icon-ack": "#53bdeb",
           "blueshade" :  "#5D12D2",
           "chatpurple" : "#B931FC",
-          "pinkshade" : "#FF6AC2"
+          "pinkshade" : "#FF6AC2",
+          "input-background" : "rgba(57, 63, 84, 0.8)",
+"input-text-inactive": "#7881A1",
+"input-text-active":" #BFD2FF",
         },
         gridTemplateColumns: {
           main: "1fr 2.4fr",

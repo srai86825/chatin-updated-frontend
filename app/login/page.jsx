@@ -67,7 +67,7 @@ const LoginPage = () => {
             userInfo: {
               email,
               name,
-              image: photoURL,
+              image: "/default_avatar.png",
             },
           });
           router.push("/onboarding");
