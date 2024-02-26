@@ -49,8 +49,8 @@ function ContactsList() {
     getContacts();
   }, []);
   return (
-    <div className="h-full flex flex-col border-t-2 border-teal-light pb-4">
-      <div className="h-16 flex items-end px-3 py-4">
+    <div className="h-full flex flex-col min-w-[440px] border-t-2 m-auto pb-4">
+      <div className="h-16 flex bg-blueshade items-end px-3 py-4">
         <div className="flex items-center gap-12 text-white">
           <BiArrowBack
             className="cursor-pointer text-xl"
@@ -60,22 +60,29 @@ function ContactsList() {
         </div>
       </div>
 
-      <div className="bg-search-input-container-background h-full flex-auto overflow-auto custom-scrollbar">
+      <div className=" bg-white h-full flex-auto overflow-auto custom-scrollbar">
         <div className="flex py-3 items-center gap-3 h-14">
-          <div className="bg-panel-header-background flex items-center rounded-md gap-5 px-3 py-1 mx-4 flex-grow">
-            <div>
+          {/* <div className=" flex items-center rounded-md gap-5 px-3 py-1 mx-4 flex-grow"> */}
+            {/* <div>
               <BiSearchAlt2 className="text-panel-header-icon cursor-pointer text-l" />
+            </div> */}
+            <div className="container">
+              <div className="search-container">
+                <input
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  type="text"
+                  placeholder="Search Contacts"
+                  className="bg-transparent text-sm focus:outline-none text-white w-full"
+                />
+                <svg viewBox="0 0 24 24" class="search__icon">
+                  <g>
+                    <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                  </g>
+                </svg>
+              </div>
             </div>
-            <div>
-              <input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                type="text"
-                placeholder="Search Contacts"
-                className="bg-transparent text-sm focus:outline-none text-white w-full"
-              />
-            </div>
-          </div>
+          {/* </div> */}
         </div>
         {userInfo && (
           <div className="pb-12">
@@ -83,7 +90,9 @@ function ContactsList() {
               ([initial, users], i) => {
                 return (
                   <div key={`${initial}-group-${i}`}>
-                    <div className="text-teal-light pl-10 pt-5">{initial}</div>
+                    <div className="text-blueshade bg- pl-10 pt-5">
+                      {initial}
+                    </div>
                     {users?.map((user) => {
                       user.image = user.profilePicture;
                       return <ChatLIstItem key={user.id} data={user} />;

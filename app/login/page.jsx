@@ -67,7 +67,7 @@ const LoginPage = () => {
             userInfo: {
               email,
               name,
-              image: "/default_avatar.png",
+              image: "/default_avatar.jpeg",
             },
           });
           router.push("/onboarding");
@@ -98,19 +98,22 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-panel-header-background h-screen w-screen flex-col gap-6">
-      <div className="flex justify-center items-center gap-2 text-white">
-        <Image src="/whatsapp.gif" alt="instaChat" width={300} height={300} />
-        <span className="text-7xl">InstaChat</span>
-      </div>
-      <button
-        onClick={handleLogin}
-        className="flex justify-center items-center bg-search-input-container-background gap-7 p-5 rounded-lg"
-      >
-        <FcGoogle className="text-4xl" />
-        <span className="text-white text-2xl">Continue with Google</span>
-      </button>
+    <div className="flex justify-center items-center bg-white h-screen w-screen flex-col gap-6">
+    <div className="flex justify-center items-center gap-2 text-white overflow-hidden h-[196px] pt-14 mb-3" >
+      <Image src="/logologin.gif" alt="instaChat" width={400} height={300} />
+      {/* <span className="text-7xl">InstaChat</span> */}
     </div>
+    <button
+      onClick={handleLogin}
+      className="flex  items-center shadow gap-5 transition-all bg-[#fff7fe] py-2 px-5 rounded-3xl border-2 border-purple-600"
+    >
+      <FcGoogle className="text-4xl" />
+      <span className="text-chatpurple text-xl font-semibold">Continue with Google</span>
+    </button>
+  </div>
+  
+  
+  
   );
 };
 

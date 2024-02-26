@@ -8,6 +8,8 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { useGlobalContext } from "@/context/StateContext";
 import { reducerCases } from "@/context/constants";
+import Image from "next/image";
+import Searchoverlay from "./Chatlist/Searchoverlay";
 
 
 const iconMapping = [
@@ -18,45 +20,51 @@ const iconMapping = [
   { icon: IoSettingsOutline, label: "Settings" },
 ];
 
+
 const Menubar = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const {state:{feedComponent},dispatch}=useGlobalContext();
   const router = useRouter();
 
   const handleItemClick = (label) => {
     console.log(`${label} clicked`);
-    dispatch({type:reducerCases.SET_FEED_COMPONENT,feedComponent:label})
-    dispatch({type:reducerCases.CHANGE_CURRENT_CHAT_USER,currentChatUser:undefined})
-    
-
+    if (label === "Search") {
+      setIsSearchOpen(true); 
+    } else {
+      dispatch({ type: reducerCases.SET_FEED_COMPONENT, feedComponent: label })
+      dispatch({ type: reducerCases.CHANGE_CURRENT_CHAT_USER, currentChatUser: undefined })
+    }
   };
+  
 
   return (
-    <div className="bg-chat-background h-[100%] bg-blueshade">
-    <section className="custom-scrollbar min-w-[210px] flex  h-screen w-fit  flex-col justify-start gap-10 overflow-auto border-r border-r-dark-4 bg-blueshade bg-opacity-90 pb-5 pt-10 max-md:hidden">
+    <div className="bg-chat-background h-[100%] bg-blueshade relative">
+      <section className="custom-scrollbar min-w-[210px] flex h-screen w-fit flex-col justify-start gap-10 overflow-auto border-r border-r-dark-4 bg-blueshade bg-opacity-90 pb-5 pt-10 max-md:hidden">
 
-      
-
-      <div className="flex justify-center flex-col align-middle gap-3 ">
-        <div className="flex gap-3 align-middle pb-5 px-6 mx-3 text-2xl font-semibold text-white ">
-          ChatIn
-        </div>
-
-        {iconMapping.map(({ icon: IconComponent, label }) => (
-          <div
-            key={label}
-            className={`cursor-pointer font-semibold transition-all duration-300 ease-out flex gap-3 rounded-xl align-middle text-white py-4 px-4 mx-3 ${feedComponent === label ? 'bg-white z-2  !text-blueshade !pl-2 ' : ''}`}
-            onClick={() => handleItemClick(label)}
-          >
-            
-            <div className="flex justify-center gap-1 align-middle">
-            {feedComponent === label && <div className="h-full active w-2 bg-pinkshade"></div>}
-              <IconComponent className="text-2xl font-extrabold" />
-            </div>
-            <p className="text-lg">{label}</p>
+        <div className="flex justify-center flex-col align-middle gap-3">
+          <div className="flex gap-3 align-middle pb-5 px-6 mx-3 text-2xl font-semibold text-white">
+            <Image src="/logo-final.png" alt="logo" height={45} width={45} />
+            <p className="m-auto">ChatIn</p>
           </div>
-        ))}
-      </div>
-    </section>
+
+          {iconMapping.map(({ icon: IconComponent, label }) => (
+            <div
+              key={label}
+              className={`cursor-pointer font-semibold transition-all duration-300 ease-out flex gap-3 rounded-xl align-middle text-white py-4 px-4 mx-3 ${feedComponent === label ? 'bg-white z-2  !text-blueshade !pl-2 ' : ''}`}
+              onClick={() => handleItemClick(label)}
+            >
+              <div className="flex justify-center gap-1 align-middle">
+                {isSearchOpen && label === "Search" && (
+                  <div className="h-full active w-2 bg-pinkshade"></div>
+                )}
+                <IconComponent className="text-2xl font-extrabold" />
+              </div>
+              <p className="text-lg">{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      {isSearchOpen && <Searchoverlay onClose={() => setIsSearchOpen(false)} />} {/* Render SearchBox component when isSearchOpen is true */}
     </div>
   );
 };

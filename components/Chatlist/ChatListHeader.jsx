@@ -44,7 +44,7 @@ function ChatListHeader() {
           onClick={showContextMenu}
         >
           {userInfo && <Avatar type="user" image={userInfo?.image} />}
-          {!userInfo && <Avatar type="lg" image="/default_avatar.png" />}
+          {!userInfo && <Avatar type="lg" image="/default_avatar.jpeg" />}
         </div>
 
         {userInfo && <p className="text-gray-100 font-bold">{userInfo.name}</p>}

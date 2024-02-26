@@ -147,7 +147,7 @@ const Icebreaker = () => {
             <h2 className="font-extrabold text-blueshade">
               <span>Icebreakers for you</span>
             </h2>
-            <p className="text-md text-white">
+            <p className="text-md text-gray-700">
               Don't know how to start a conversation or can't find things to say
               but want the conversation keep going? We got you. Try these amazing
               icebreakers.

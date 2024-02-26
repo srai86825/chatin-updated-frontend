@@ -7,6 +7,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { BsMic, BsMicMute } from "react-icons/bs";
 import { MdCallEnd } from "react-icons/md";
+import { IoCall } from "react-icons/io5";
+import { IoMdMic } from "react-icons/io";
 
 function Container({ data }) {
   const {
@@ -218,27 +220,29 @@ function Container({ data }) {
   };
 
   return (
-    <div className="border-conversation-border border-l w-full bg-conversation-panel-background flex flex-col h-[100vh] overflow-hidden justify-center text-white">
-      <div className="flex flex-col gap-3 items-center">
-        <span className="text-5xl">{data.name}</span>
-        <span id="outgoing-call-status" className="text-lg">
-          {callAccepted ? "Ongoing call" : "Calling..."}
-        </span>
-        <span className="text-md text-white my-4">
-          {formatTime(callDuration)}
-        </span>
+    <div className="callcont border-conversation-border border-l max-h-screen flex flex-col  overflow-hidden justify-center text-black">
+      <div className="flex z-50 flex-col gap-2 items-center">
+       
         {(!callAccepted || data.callType === "voice") && (
-          <div className="my-24">
+          <div className="my-12 border-4 border-blueshade rounded-full">
             <Image
               className="rounded-full"
               alt={`${data.name} avatar`}
               src={data.image}
-              width={400}
-              height={400}
+              width={250}
+              height={250}
             />
           </div>
         )}
-        <div className="my-5 relative" id="remote-video">
+         <span className="text-4xl font-bold text-blueshade">{data.name}</span>
+        <div id="outgoing-call-status" className="bg-chatpurple flex gap-3  text-white px-8 py-3 rounded-full transition duration-200 ease-in-out hover:bg-purple-700 active:bg-purple-900 focus:outline-none">
+        <IoCall  className="text-white  m-auto"/>
+<div>{callAccepted ? "Ongoing call" : "Calling..."}</div>
+        </div>
+        <span className="text-md text-black my-4">
+          {formatTime(callDuration)}
+        </span>
+        <div className="my-4 relative" id="remote-video">
           <div
             className={`absolute bottom-5 right-5 ${
               callAccepted && data.callType === "video" ? "w-32 h-24" : ""
@@ -248,28 +252,28 @@ function Container({ data }) {
         </div>
         <div className="flex flex-row gap-12">
           <div
-            className="h-16 w-16 rounded-full bg-white flex flex-col justify-center items-center"
+            className="h-14 w-14 rounded-full bg-white  border-2 border-chatpurple flex flex-col justify-center items-center"
             onClick={handleMuteCall}
           >
             {isMuted ? (
               <BsMicMute
-                className="text-4xl text-black cursor-pointer"
+                className="text-4xl text-chatpurple cursor-pointer"
                 title="mute"
                 aria-disabled
               />
             ) : (
-              <BsMic
-                className="text-4xl text-black cursor-pointer"
+              <IoMdMic 
+                className="text-4xl text-chatpurple cursor-pointer"
                 title="unmute"
                 aria-disabled
               />
             )}
           </div>
           <div
-            className="h-16 w-16 rounded-full bg-red-600 flex flex-col justify-center items-center"
+            className="h-14 w-14 rounded-full border-2 border-chatpurple  bg-white hover: flex flex-col justify-center items-center"
             onClick={handleEndCall}
           >
-            <MdCallEnd className="text-4xl cursor-pointer" title="end call" />
+            <MdCallEnd className="text-4xl text-red-400 cursor-pointer" title="end call" />
           </div>
         </div>
       </div>

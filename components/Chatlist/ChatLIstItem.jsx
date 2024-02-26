@@ -6,7 +6,7 @@ import { calculateTime } from "@/utils/CalculateTime";
 import { BsImage } from "react-icons/bs";
 import { BiSolidMicrophone } from "react-icons/bi";
 
-function ChatLIstItem({ data, isContactPage = false }) {
+function ChatListItem({ data, isContactPage = false }) {
   const {
     state: { userInfo, currentChatUser },
     dispatch,
@@ -20,7 +20,11 @@ function ChatLIstItem({ data, isContactPage = false }) {
 
   return (
     <div
-      className={`flex  cursor-pointer border-b-2 border-gray-200  py-2 border-opacity-60 items-center hover:bg-purple-600 `}
+      className={`flex cursor-pointer py-2 items-center ${
+        isContactPage
+          ? " border-b "
+          : " searchchat border-blueshade border-opacity-60 transition-all !text-blueshade hover:bg-purple-600"
+      }`}
       onClick={handleInitiateChat}
     >
       <div className="min-w-fit px-5 pt-3 pb-1 ">
@@ -29,7 +33,10 @@ function ChatLIstItem({ data, isContactPage = false }) {
       <div className="min-h-full flex flex-col justify-center mt-3 pr-2 w-full">
         <div className="flex justify-between">
           <div>
-            <span className="text-white text-xl font-semibold ">{data?.name || "Unknown User"}</span>
+            <span className={`text-xl font-semibold ${
+        isContactPage
+          ? "  "
+          : "!text-blueshade  "}`}>{data?.name || "Unknown User"}</span>
           </div>
           {isContactPage && <div>
             <span
@@ -100,4 +107,4 @@ function ChatLIstItem({ data, isContactPage = false }) {
   );
 }
 
-export default ChatLIstItem;
+export default ChatListItem;

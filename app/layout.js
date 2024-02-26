@@ -5,8 +5,8 @@ import { GlobalContextProvider } from "@/context/StateContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "InstaChat",
-  description: "Get in touch in seconds with InstaChat- instand messanging app",
+  title: "ChatIn",
+  description: "Get in touch in seconds with ChatIn- instant messaging app",
   icons: { icon: "/favicon.png" },
 };
 

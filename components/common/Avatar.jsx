@@ -38,7 +38,7 @@ function Avatar({ type, image, setImage }) {
     {
       name: "Remove Photo",
       callback: () => {
-        setImage("/default_avatar.png");
+        setImage("/default_avatar.jpeg");
       },
     },
   ];
@@ -80,7 +80,7 @@ function Avatar({ type, image, setImage }) {
       <div className="flex justify-center items-center">
         {type === "sm" && (
           <div className="relative h-10 w-10">
-            <Image src={image | "/public/avatars/3.png"} alt="avatar" className="rounded-full" fill />
+            <Image src={image | "/avatars/3.png"} alt="avatar" className="rounded-full" fill />
           </div>
         )}
         {type === "lg" && (
@@ -112,14 +112,14 @@ function Avatar({ type, image, setImage }) {
             onMouseLeave={() => setHover(false)}
           >
             <div
-              className={`z-10 text-white bg-photopicker-overlay-background h-60 w-60 absolute top-0 left-0 flex items-center rounded-full justify-center flex-col text-center gap-2
+              className={`z-10 text-white bg-photopicker-overlay-background h-52 w-52 absolute top-0 left-0 flex items-center rounded-full justify-center flex-col text-center gap-2
               ${hover ? "visible" : "hidden"}`}
               onClick={(e) => showContextMenu(e)}
             >
               <FaCamera className="text-2xl" id="context-opener" />
               <span className="text-sm">Change Profile Picture</span>
             </div>
-            <div className="flex items-center justify-center h-60 w-60 relative">
+            <div className="flex items-center justify-center h-52 w-52 relative">
               <Image
                 src={image}
                 alt="avatar"
