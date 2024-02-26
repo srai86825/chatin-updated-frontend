@@ -22,7 +22,7 @@ function ChatListItem({ data, isContactPage = false }) {
     <div
       className={`flex cursor-pointer py-2 items-center ${
         isContactPage
-          ? " border-b "
+          ? " border-b !text-white"
           : " searchchat border-blueshade border-opacity-60 transition-all !text-blueshade hover:bg-purple-600"
       }`}
       onClick={handleInitiateChat}
@@ -42,7 +42,7 @@ function ChatListItem({ data, isContactPage = false }) {
             <span
               className={` text-sm ${
                 data.totalUnreadMessages > 0
-                  ? "text-icon-green"
+                  ? "text-pink-300"
                   : "text-gray-300"
               }`}
             >
@@ -96,7 +96,7 @@ function ChatListItem({ data, isContactPage = false }) {
               )}
             </span>
             {isContactPage && data.totalUnreadMessages > 0 && (
-              <span className="px-2 bg-icon-green rounded-full">
+              <span className="px-2 bg-pinkshade rounded-full">
                 {data.totalUnreadMessages}
               </span>
             )}
