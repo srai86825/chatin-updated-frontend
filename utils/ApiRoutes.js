@@ -4,6 +4,7 @@ export const HOST_SERVER=process.env.NEXT_PUBLIC_HOST|| "https://chatin-server.o
 
 const AUTH_ROUTE=`${HOST_SERVER}/api/auth`
 const MESSAGES_ROUTE=`${HOST_SERVER}/api/messages`
+
 const STORIES_ROUTE=`${HOST_SERVER}/api/stories`
 const FEEDS_ROUTE = `${HOST_SERVER}/api/feeds`;
 
